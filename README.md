@@ -1,6 +1,6 @@
 # Currency Converter CLI
 
-### I am using this project to practice using docker for the first time. So I will not be adding and more currencies at the moment
+### I am using this project to practice using docker for the first time. So I will not be adding more currencies at the moment
 
 ## Description
 A Python Command Line Interface which lets people convert Great British Pounds (£) using the currencies listed below:
