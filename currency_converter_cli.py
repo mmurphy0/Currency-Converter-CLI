@@ -31,7 +31,7 @@ def main_menu():
                   print('Please try again')
                   time.sleep(1)
 
-    #Gets the currency code used to gather the exchange rate from the API
+    #Gets the currency code used to retrieve the exchange rate from the API
     if user_choice == 1:
           user_currency = 'EUR'
           return user_currency
@@ -44,10 +44,10 @@ def main_menu():
 def get_conversion_amount():
       while True:
             print('-- Please enter how much you wish to convert --')
-            print(' ')
             conversion_amount = input('>> £')
             print(' ')
 
+            #Checks the inputted amount of money is a number
             if conversion_amount.isdigit() == True:
                   return conversion_amount
             elif conversion_amount.isdigit() == False:
@@ -56,6 +56,28 @@ def get_conversion_amount():
                   print('Please try again')
                   time.sleep(1)
 
+def get_conversion_rate(user_currency):
+      #Checks that the program can get responses from the REST API
+      try:
+            response = requests.get(
+                  f"https://api.frankfurter.app/latest?from=GBP&to={user_currency}"
+            )
+            response.raise_for_status()
+      except requests.RequestException:
+            print('Unable to retrieve conversion rates')
+            time.sleep(1)
+            print('We apologise for this inconvenience')
+            time.sleep(1)
+            main_menu()
+
+      #Puts the data from the API response into a JSON
+      data = response.json()
+
+      #Extracts the conversion rate from the JSON file
+      conversionrate = data['rates'][user_currency]
+
+      return conversionrate
+
 user_currency = main_menu()
 user_conversion_amount = get_conversion_amount()
-# conversionrate = get_conversion_rate
+conversionrate = get_conversion_rate(user_currency)
