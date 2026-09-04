@@ -34,9 +34,28 @@ def main_menu():
     #Gets the currency code used to gather the exchange rate from the API
     if user_choice == 1:
           user_currency = 'EUR'
+          return user_currency
     elif user_choice == 2:
           user_currency = 'USD'
+          return user_currency
     elif user_choice == 3:
           sys.exit()
-          
-main_menu()
+
+def get_conversion_amount():
+      while True:
+            print('-- Please enter how much you wish to convert --')
+            print(' ')
+            conversion_amount = input('>> £')
+            print(' ')
+
+            if conversion_amount.isdigit() == True:
+                  return conversion_amount
+            elif conversion_amount.isdigit() == False:
+                  print('Only numbers are allowed to be entered')
+                  time.sleep(1)
+                  print('Please try again')
+                  time.sleep(1)
+
+user_currency = main_menu()
+user_conversion_amount = get_conversion_amount()
+# conversionrate = get_conversion_rate
