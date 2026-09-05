@@ -1,0 +1,6 @@
+.git
+__pycache__/
+*.pyc
+~$Test Log.xlsx
+Test Log.xlsx
+Test Log.pdf

@@ -1,2 +1,4 @@
 Test Log.xlsx
 ~$Test Log.xlsx
+__pycache__/
+*.pyc
