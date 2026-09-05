@@ -33,7 +33,7 @@ No API key is required.
 ## Tech Stack
 - Python 3
 
-- Docker
+- Docker (Coming soon)
 
 - Requests (HTTP client)
 
