@@ -56,7 +56,7 @@ def get_conversion_amount():
                   print('Please try again')
                   time.sleep(1)
 
-def get_conversion_rate(user_currency):
+def get_conversion_result(user_currency):
       #Checks that the program can get responses from the REST API
       try:
             response = requests.get(
@@ -76,8 +76,21 @@ def get_conversion_rate(user_currency):
       #Extracts the conversion rate from the JSON file
       conversionrate = data['rates'][user_currency]
 
-      return conversionrate
+      #Multiplies the amount the user inputted by the conversion rate, then rounds to 2 decimal places
+      conversionresult = round((float(user_conversion_amount) * conversionrate),2)
+
+      return conversionresult
+
+def output_conversion(user_currency, user_conversion_amount, conversionresult):
+      print('---- Converted Amount ----')
+      print(' ')
+      print(f'GBP: {user_conversion_amount}')
+      print(f'{user_currency}: {conversionresult}')
+      print(' ')
+      print('-'*26)
+      sys.exit()
 
 user_currency = main_menu()
 user_conversion_amount = get_conversion_amount()
-conversionrate = get_conversion_rate(user_currency)
+conversionresult = get_conversion_result(user_currency)
+output_conversion(user_currency, user_conversion_amount, conversionresult)
