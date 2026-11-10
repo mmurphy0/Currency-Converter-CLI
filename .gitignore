@@ -2,3 +2,4 @@ Test Log.xlsx
 ~$Test Log.xlsx
 __pycache__/
 *.pyc
+.DS_Store
